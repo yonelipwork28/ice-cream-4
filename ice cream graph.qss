@@ -1,0 +1,61 @@
+QWidget {
+    color: #26324a;
+    font-family: "Segoe UI";
+    font-size: 13px;
+}
+
+QWidget#IceCreamSalesWindow {
+    background-color: #f3f6fc;
+}
+
+QLabel#pageTitle {
+    color: #19233b;
+    font-size: 27px;
+    font-weight: 700;
+    padding-top: 4px;
+}
+
+QLabel#pageSubtitle {
+    color: #74809a;
+    font-size: 14px;
+}
+
+QLabel#fileStatus {
+    color: #66738d;
+    font-size: 12px;
+}
+
+QPushButton#primaryButton,
+QPushButton#secondaryButton {
+    border-radius: 9px;
+    padding: 10px 20px;
+    font-weight: 600;
+}
+
+QPushButton#primaryButton {
+    color: #ffffff;
+    background-color: #4263eb;
+    border: 1px solid #4263eb;
+}
+
+QPushButton#primaryButton:hover {
+    background-color: #3451cf;
+}
+
+QPushButton#secondaryButton {
+    color: #34415d;
+    background-color: #ffffff;
+    border: 1px solid #d8e0ed;
+}
+
+QPushButton#secondaryButton:hover {
+    background-color: #edf2fb;
+}
+
+QToolBar#plotToolbar {
+    background-color: #ffffff;
+    border: 1px solid #e3eaf5;
+    border-radius: 8px;
+    spacing: 6px;
+    padding: 4px;
+}
