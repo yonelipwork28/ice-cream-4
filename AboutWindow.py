@@ -10,12 +10,13 @@ class AboutWindow(QWidget):
         super().__init__()
 
         self.setWindowTitle('About Me')
+        self.setStyleSheet('background-color: white')
 
         self.Title_welcom = QLabel('Welcome to Card of' , self)
         self.Title_welcom.setGeometry(50,20,300,60)
         self.Title_welcom.setStyleSheet("font-size: 30px ;")
         self.my_name = QLabel('Yonatan Lipshitz' , self)
-        self.my_name.setGeometry(50,60,300,60)
+        self.my_name.setGeometry(50,65,300,60)
         self.my_name.setStyleSheet("font-size: 30px ; font-Weight: bold; ")
 
 

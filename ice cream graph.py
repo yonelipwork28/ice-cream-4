@@ -1,5 +1,6 @@
 import sys
 import csv
+import numpy
 from pathlib import Path
 
 from AboutWindow import AboutWindow
@@ -87,7 +88,7 @@ class IceCreamSalesWindow(QWidget):
 
     def draw_graph(self, temperatures, revenues):
         self.axes.clear()
-        self.axes.bar(temperatures, revenues, width=0.2, color="#4263eb")
+        self.axes.scatter(temperatures, revenues, s=1, color="#4263eb")
         self.axes.set_title("Ice Cream Sales vs. Temperature", fontsize=15, pad=14)
         self.axes.set_xlabel("Temperature (°C)", labelpad=10)
         self.axes.set_ylabel("Ice Cream Sales Revenue", labelpad=10)
