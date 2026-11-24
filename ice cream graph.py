@@ -1,4 +1,5 @@
 import sys
+import csv
 from pathlib import Path
 
 from AboutWindow import AboutWindow
@@ -59,7 +60,7 @@ class IceCreamSalesWindow(QWidget):
 
         self.file_status = QLabel("מציג נתוני תצוגה לדוגמה")
         self.file_status.setObjectName("fileStatus")
-        self.file_status.setAlignment(Qt.AlignmentFlag.AlignCenterS)
+        self.file_status.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.figure = Figure(figsize=(9, 5), facecolor="#ffffff")
         self.axes = self.figure.add_subplot(111)
@@ -97,6 +98,8 @@ class IceCreamSalesWindow(QWidget):
         self.figure.tight_layout()
         self.canvas.draw_idle()
 
+
+
     def select_csv_file(self):
         file_path, _ = QFileDialog.getOpenFileName(
             self,
@@ -107,8 +110,32 @@ class IceCreamSalesWindow(QWidget):
         if not file_path:
             return
 
-        self.selected_file_path = file_path
+        temperatures = []    #טמפ' נוכחית ביום
+        revenues = []        #הכנסות מגלידות
+        
+        self.select_file_path = file_path
         self.file_status.setText(f"קובץ נבחר: {Path(file_path).name}")
+
+        with open(self.select_file_path , mode="r" , encoding="utf-8-sig" , newline="") as f:
+            reader = csv.reader(f)
+            header = next(reader, None)
+
+            for row in reader:
+                if not row or len(row)<2:
+                    continue
+
+                temp_value = float(row[0].strip())
+                rev_value = float(row[1].strip())
+
+                temperatures.append(temp_value)
+                revenues.append(rev_value)
+
+        self.draw_graph(temperatures, revenues)
+            
+
+
+
+            
 
 
 if __name__ == "__main__":
