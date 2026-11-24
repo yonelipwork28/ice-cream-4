@@ -30,10 +30,20 @@ class AboutWindow(QWidget):
         self.my_Linkedin.setOpenExternalLinks(True)
         self.my_Linkedin.setStyleSheet("font-size: 20px ;")
 
+        self.link_GitHub = QLabel(self)
+        self.link_GitHub.setGeometry(50,230,300,30)
+        self.link_GitHub.setText('<a href="https://github.com/yonelipwork28/ice-cream-4.git">link of My GitHub</a>')
+        self.link_GitHub.setTextInteractionFlags(Qt.TextBrowserInteraction)
+        self.link_GitHub.setOpenExternalLinks(True)
+        self.link_GitHub.setStyleSheet("font-size: 20px ;")
+
+
+
+
         img_path = os.path.join(os.path.dirname(__file__), 'spongbob.jpeg')
         image = QPixmap(img_path).scaled(300,300)
         self.my_picture=QLabel(self)
-        self.my_picture.setGeometry(20,260,300,300)
+        self.my_picture.setGeometry(20,280,300,300)
         self.my_picture.setPixmap(image)
         
         
