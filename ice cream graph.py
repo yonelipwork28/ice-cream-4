@@ -1,6 +1,6 @@
 import sys
 import csv
-import numpy
+import numpy as np
 from pathlib import Path
 
 from AboutWindow import AboutWindow
@@ -89,6 +89,20 @@ class IceCreamSalesWindow(QWidget):
     def draw_graph(self, temperatures, revenues):
         self.axes.clear()
         self.axes.scatter(temperatures, revenues, s=1, color="#4263eb")
+        if len(temperatures) >= 2 and np.unique(temperatures).size > 1:
+            slope, intercept = np.polyfit(temperatures, revenues, 1)
+            trend_temperatures = np.linspace(min(temperatures), max(temperatures), 100)
+            trend_revenues = slope * trend_temperatures + intercept
+            sign = "+" if intercept >= 0 else "-"
+            equation = f"y = {slope:.2f}x {sign} {abs(intercept):.2f}"
+            self.axes.plot(
+                trend_temperatures,
+                trend_revenues,
+                color="#e8590c",
+                linewidth=2,
+                label=equation,
+            )
+            self.axes.legend()
         self.axes.set_title("Ice Cream Sales vs. Temperature", fontsize=15, pad=14)
         self.axes.set_xlabel("Temperature (°C)", labelpad=10)
         self.axes.set_ylabel("Ice Cream Sales Revenue", labelpad=10)
